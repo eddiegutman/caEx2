@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/caEx2.dir/main.c.o"
+  "CMakeFiles/caEx2.dir/src/ex2.c.o"
+  "CMakeFiles/caEx2.dir/src/main.c.o"
   "caEx2"
   "caEx2.pdb"
 )

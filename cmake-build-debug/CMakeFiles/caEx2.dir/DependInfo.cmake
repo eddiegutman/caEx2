@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/eddie/Documents/code/ClionProjects/caEx2/main.c" "/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug/CMakeFiles/caEx2.dir/main.c.o"
+  "/home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c" "/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug/CMakeFiles/caEx2.dir/src/ex2.c.o"
+  "/home/eddie/Documents/code/ClionProjects/caEx2/src/main.c" "/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug/CMakeFiles/caEx2.dir/src/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "../."
   )
 
 # Targets to which this target links.

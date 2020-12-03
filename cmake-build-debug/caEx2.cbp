@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/eddie/Documents/code/ClionProjects/caEx2/."/>
 					<Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/10.2.0/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/10.2.0/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
@@ -63,6 +64,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/eddie/Documents/code/ClionProjects/caEx2/."/>
 					<Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/10.2.0/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/10.2.0/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
@@ -76,7 +78,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/eddie/Documents/code/ClionProjects/caEx2/main.c">
+		<Unit filename="/home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c">
+			<Option target="caEx2"/>
+		</Unit>
+		<Unit filename="/home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.h">
+			<Option target="caEx2"/>
+		</Unit>
+		<Unit filename="/home/eddie/Documents/code/ClionProjects/caEx2/src/main.c">
 			<Option target="caEx2"/>
 		</Unit>
 		<Unit filename="/home/eddie/Documents/code/ClionProjects/caEx2/CMakeLists.txt">
