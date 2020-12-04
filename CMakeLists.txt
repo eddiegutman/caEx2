@@ -5,4 +5,6 @@ set(CMAKE_C_STANDARD 99)
 
 include_directories(.)
 
-add_executable(caEx2 src/main.c src/ex2.c)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+
+add_executable(caEx2 src/ex2.c)
