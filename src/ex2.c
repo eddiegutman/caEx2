@@ -1,5 +1,5 @@
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 const unsigned char WIN_NEW_LINE_LE[4] = {0x0d, 0x00, 0x0a, 0x00};
@@ -21,6 +21,8 @@ const int FIRST_OPTION = 3;
 const int SECOND_OPTION = 5;
 const int THIRD_OPTION = 6;
 
+
+
 void fileCopy(char *src, char *dst) {
     FILE *srcFile = fopen(src, "rb");
     FILE *dstFile = fopen(dst, "wb");
@@ -34,14 +36,27 @@ void fileCopy(char *src, char *dst) {
     fclose(dstFile);
 }
 
-int isLittleEndianness(FILE *src, FILE *dst) {
+void bufferSwap(unsigned char *buffer, int size, int toSwap) {
+    if (toSwap) {
+        for (int i = 0; i < size; i += TWO_BYTES) {
+            unsigned char tmp = buffer[i];
+            buffer[i] = buffer[i + ONE_BYTE];
+            buffer[i + ONE_BYTE] = tmp;
+        }
+    }
+}
+
+int isLittleEndianness(FILE *src, FILE *dst, int toSwap) {
+    int isLittle;
     unsigned char buffer[TWO_BYTES];
     fread(buffer, ONE_BYTE, sizeof(buffer), src);
-    fwrite(buffer, ONE_BYTE, sizeof(buffer), dst);
     if (buffer[FIRST_BYTE] == BOM_SECOND_BYTE && buffer[SECOND_BYTE] == BOM_FIRST_BYTE)
-        return TRUE;
+        isLittle = TRUE;
     else
-        return FALSE;
+        isLittle = FALSE;
+    bufferSwap(buffer, sizeof(buffer), toSwap);
+    fwrite(buffer, ONE_BYTE, sizeof(buffer), dst);
+    return isLittle;
 }
 
 const unsigned char *mapEncoding(const char *system, int isLittleEndianness) {
@@ -61,7 +76,7 @@ int areEqual(const unsigned char *encoding, const unsigned char *buffer) {
     return TRUE;
 }
 
-void systemConvert(const char *src, const char *dst, const char *systemOld, const char *systemNew) {
+void systemConvert(const char *src, const char *dst, const char *systemOld, const char *systemNew, const char *status) {
     FILE *srcFile = fopen(src, "rb");
     FILE *dstFile = fopen(dst, "wb");
 
@@ -71,12 +86,24 @@ void systemConvert(const char *src, const char *dst, const char *systemOld, cons
         return;
     }
 
-    int writeSize = (strcmp(systemNew, "-win") == 0) ? FOUR_BYTES : TWO_BYTES;
     unsigned char buffer[TWO_BYTES];
 
-    int isLE = isLittleEndianness(srcFile, dstFile);
+    int toSwap = (strcmp(status, "-keep") == 0) ? FALSE : TRUE;
+    int isLE = isLittleEndianness(srcFile, dstFile, toSwap);
     const unsigned char *oldLineEncoding = mapEncoding(systemOld, isLE);
     const unsigned char *newLineEncoding = mapEncoding(systemNew, isLE);
+    const unsigned char *oldLineWrite;
+    const unsigned char *newLineWrite;
+
+    if (toSwap) {
+        oldLineWrite = mapEncoding(systemOld, !isLE);
+        newLineWrite = mapEncoding(systemNew, !isLE);
+    } else {
+        oldLineWrite = oldLineEncoding;
+        newLineWrite = newLineEncoding;
+    }
+
+    int writeSize = (strcmp(systemNew, "-win") == 0) ? FOUR_BYTES : TWO_BYTES;
 
     while (fread(buffer, ONE_BYTE, sizeof(buffer), srcFile)) {
         if (areEqual(oldLineEncoding, buffer)) {
@@ -84,15 +111,17 @@ void systemConvert(const char *src, const char *dst, const char *systemOld, cons
                 if (!fread(buffer, ONE_BYTE, sizeof(buffer), srcFile))
                     break;
                 if (areEqual(oldLineEncoding + TWO_BYTES, buffer))
-                    fwrite(newLineEncoding, ONE_BYTE, writeSize, dstFile);
+                    fwrite(newLineWrite, ONE_BYTE, writeSize, dstFile);
                 else {
-                    fwrite(oldLineEncoding, ONE_BYTE, writeSize, dstFile);
+                    fwrite(oldLineWrite, ONE_BYTE, writeSize, dstFile);
+                    bufferSwap(buffer, sizeof(buffer), toSwap);
                     fwrite(buffer, ONE_BYTE, writeSize, dstFile);
                 }
             } else {
-                fwrite(newLineEncoding, ONE_BYTE, writeSize, dstFile);
+                fwrite(newLineWrite, ONE_BYTE, writeSize, dstFile);
             }
         } else {
+            bufferSwap(buffer, sizeof(buffer), toSwap);
             fwrite(buffer, ONE_BYTE, sizeof(buffer), dstFile);
         }
     }
@@ -101,7 +130,7 @@ void systemConvert(const char *src, const char *dst, const char *systemOld, cons
 }
 
 void endiannessConvert(char *src, char *dst, char *systemOld, char *systemNew, char *status) {
-
+    systemConvert(src, dst, systemOld, systemNew, status);
 }
 
 
@@ -109,7 +138,7 @@ int main(int argc, char *argv[]) {
     if (argc == FIRST_OPTION)
         fileCopy(argv[1], argv[2]);
     if (argc == SECOND_OPTION)
-        systemConvert(argv[1], argv[2], argv[3], argv[4]);
+        systemConvert(argv[1], argv[2], argv[3], argv[4], "-keep");
     if (argc == THIRD_OPTION)
         endiannessConvert(argv[1], argv[2], argv[3], argv[4], argv[5]);
     return 0;
