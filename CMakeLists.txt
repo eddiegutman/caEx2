@@ -3,4 +3,7 @@ project(caEx2 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(caEx2 src/main.c)
+include_directories(.)
+
+add_executable(caEx2 src/ex2.c)
+

@@ -1,0 +1,4 @@
+/opt/clion-2020.3/bin/cmake/linux/bin/cmake -G "CodeBlocks - Unix Makefiles" /home/eddie/Documents/code/ClionProjects/caEx2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/eddie/Documents/code/ClionProjects/caEx2/bin
