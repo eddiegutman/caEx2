@@ -38,8 +38,8 @@
 				</MakeCommands>
 			</Target>
 			<Target title="caEx2">
-				<Option output="/home/eddie/Documents/code/ClionProjects/caEx2/bin/caEx2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/eddie/Documents/code/ClionProjects/caEx2/bin"/>
+				<Option output="/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug/caEx2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -58,8 +58,8 @@
 				</MakeCommands>
 			</Target>
 			<Target title="caEx2/fast">
-				<Option output="/home/eddie/Documents/code/ClionProjects/caEx2/bin/caEx2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/eddie/Documents/code/ClionProjects/caEx2/bin"/>
+				<Option output="/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug/caEx2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>

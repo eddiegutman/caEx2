@@ -244,7 +244,6 @@ void endianConvert(const char *src, const char *dst, const char *systemOld, cons
                 // and checking if read correctly.
                 if (!fread(buffer, ONE_BYTE, sizeof(buffer), srcFile))
                     break;
-
                 // checking if the 2 last bytes of oldLineEncoding are equal to the new read 2 bytes in buffer.
                 if (areEqual(oldLineEncoding + TWO_BYTES, buffer))
 
@@ -253,13 +252,13 @@ void endianConvert(const char *src, const char *dst, const char *systemOld, cons
                 else {
                     // if not equal, we write only the first 2 bytes of oldLineEncoding.
                     // (which were previously in the buffer).
-                    fwrite(oldLineWrite, ONE_BYTE, writeSize, dstFile);
+                    fwrite(oldLineWrite, ONE_BYTE, TWO_BYTES, dstFile);
 
                     // then we write the 2 new bytes of the buffer.
                     bufferSwap(buffer, sizeof(buffer), toSwap);
-                    fwrite(buffer, ONE_BYTE, writeSize, dstFile);
+                    fwrite(buffer, ONE_BYTE, sizeof(buffer), dstFile);
                 }
-            } else { // if old OS is not windows
+            } else { // if there is a match and old OS is not windows
                 // we write the new OS line feed.
                 fwrite(newLineWrite, ONE_BYTE, writeSize, dstFile);
             }

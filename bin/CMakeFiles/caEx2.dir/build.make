@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /app/extra/clion/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /opt/clion-2020.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /app/extra/clion/bin/cmake/linux/bin/cmake -E rm -f
+RM = /opt/clion-2020.3/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -80,15 +80,15 @@ include CMakeFiles/caEx2.dir/flags.make
 CMakeFiles/caEx2.dir/src/ex2.c.o: CMakeFiles/caEx2.dir/flags.make
 CMakeFiles/caEx2.dir/src/ex2.c.o: ../src/ex2.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddie/Documents/code/ClionProjects/caEx2/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/caEx2.dir/src/ex2.c.o"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/caEx2.dir/src/ex2.c.o   -c /home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/caEx2.dir/src/ex2.c.o   -c /home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c
 
 CMakeFiles/caEx2.dir/src/ex2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/caEx2.dir/src/ex2.c.i"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c > CMakeFiles/caEx2.dir/src/ex2.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c > CMakeFiles/caEx2.dir/src/ex2.c.i
 
 CMakeFiles/caEx2.dir/src/ex2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/caEx2.dir/src/ex2.c.s"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c -o CMakeFiles/caEx2.dir/src/ex2.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/eddie/Documents/code/ClionProjects/caEx2/src/ex2.c -o CMakeFiles/caEx2.dir/src/ex2.c.s
 
 # Object files for target caEx2
 caEx2_OBJECTS = \

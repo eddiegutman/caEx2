@@ -1,4 +1,0 @@
-/app/extra/clion/bin/cmake/linux/bin/cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G "CodeBlocks - Unix Makefiles" /home/eddie/Documents/code/ClionProjects/caEx2
--- Configuring done
--- Generating done
--- Build files have been written to: /home/eddie/Documents/code/ClionProjects/caEx2/cmake-build-default

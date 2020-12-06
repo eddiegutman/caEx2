@@ -1,1 +1,1 @@
-/usr/bin/gcc    CMakeFiles/caEx2.dir/src/ex2.c.o  -o caEx2 
+/usr/bin/cc    CMakeFiles/caEx2.dir/src/ex2.c.o  -o caEx2 

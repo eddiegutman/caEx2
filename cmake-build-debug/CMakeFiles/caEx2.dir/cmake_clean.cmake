@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "../bin/caEx2"
-  "../bin/caEx2.pdb"
   "CMakeFiles/caEx2.dir/src/ex2.c.o"
+  "caEx2"
+  "caEx2.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
