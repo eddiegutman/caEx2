@@ -218,7 +218,8 @@ int greater(magnitude a, magnitude b) {
 
 void print_bits(int num)
 {
-    for(int i=31 ; i>=0 ; i--) {
+    int i = 31;
+    for(; i>=0 ; i--) {
         if(num & 1<< i)
             printf("1");
         else
